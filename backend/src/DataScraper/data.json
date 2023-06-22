@@ -1,9 +1,14 @@
 {
+    "organisation": {
+        "token": "token",
+        "name": "organisation-name"
+    },
     "infoTypes": [
         {
             "id": "UUID1",
             "name": "composer version",
             "description": "composer version",
+            "defaultBranch": "master",
             "defaultPath": "path/file/composer.json",
             "defaultScraper": "~COMPOSER_VERSION=(\\d+.\\d+.\\d+)~"
         }
@@ -14,7 +19,8 @@
             "infoSources": [
                 {
                     "infoTypeId": "UUID1",
-                    "sourcePath": "path/file/composer.json",
+                    "branch": "master",
+                    "path": "path/file/composer.json",
                     "scraper": "~COMPOSER_VERSION=(\\d+.\\d+.\\d+)~"
                 }
             ]

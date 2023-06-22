@@ -1,6 +1,5 @@
 <script>
 import VueApexCharts from "vue3-apexcharts";
-const options = {}
 
 export default {
   data() {
@@ -16,7 +15,50 @@ export default {
       series: [{
         name: 'series-1',
         data: [30, 40, 45, 50, 49, 60, 70, 91]
-      }]
+      }],
+      heatmapOptions: {
+        chart: {
+          type: 'heatmap'
+        }
+      },
+      heatmapSeries: [
+        {
+          name: 'Jan',
+          data: [30, 40, 45, 50, 49, 60, 70, 91]
+        },
+        {
+          name: 'Feb',
+          data: [30, 40, 45, 50, 49, 60, 70, 91]
+        },
+        {
+          name: 'Mar',
+          data: [30, 40, 45, 50, 49, 60, 70, 91]
+        },
+        {
+          name: 'Apr',
+          data: [30, 40, 45, 50, 49, 60, 70, 91]
+        },
+        {
+          name: 'May',
+          data: [30, 40, 45, 50, 49, 60, 70, 91]
+        },
+        {
+          name: 'Jun',
+          data: [30, 40, 45, 50, 49, 60, 70, 91]
+        },
+        {
+          name: 'Jul',
+          data: [30, 40, 45, 50, 49, 60, 70, 91]
+        },
+        {
+          name: 'Aug',
+          data: [30, 40, 45, 50, 49, 60, 70, 91]
+        },
+        {
+          name: 'Sep',
+          data: [30, 40, 45, 50, 49, 60, 70, 91]
+        }
+      ]
     }
   },
   components: {
@@ -31,6 +73,7 @@ export default {
   </div>
   <div>
     <apexchart width="500" type="bar" :options="options" :series="series"></apexchart>
+    <apexchart width="500" type="heatmap" :options="heatmapOptions" :series="heatmapSeries"></apexchart>
   </div>
 </template>
 

@@ -1,0 +1,23 @@
+{
+    "infoTypes": [
+        {
+            "id": "UUID1",
+            "name": "composer version",
+            "description": "composer version",
+            "defaultPath": "path/file/composer.json",
+            "defaultScraper": "~COMPOSER_VERSION=(\\d+.\\d+.\\d+)~"
+        }
+    ],
+    "services": [
+        {
+            "name": "service1",
+            "infoSources": [
+                {
+                    "infoTypeId": "UUID1",
+                    "sourcePath": "path/file/composer.json",
+                    "scraper": "~COMPOSER_VERSION=(\\d+.\\d+.\\d+)~"
+                }
+            ]
+        }
+    ]
+}

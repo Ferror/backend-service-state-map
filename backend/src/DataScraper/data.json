@@ -16,6 +16,7 @@
     "services": [
         {
             "name": "service1",
+            "description": "service1 description",
             "infoSources": [
                 {
                     "infoTypeId": "UUID1",

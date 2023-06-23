@@ -6,6 +6,9 @@ namespace App\DataScraper;
 
 final readonly class Service
 {
+    /**
+     * @param InfoSource[] $infoSources
+     */
     public function __construct(
         public string $name,
         public string $description,

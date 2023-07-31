@@ -11,6 +11,8 @@ final readonly class InfoType
         public string $name,
         public string $description,
         public string $defaultPath,
+        public string $defaultBranch,
+        public string $defaultScraper,
     ) {
     }
 }

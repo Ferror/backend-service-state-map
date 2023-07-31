@@ -5,7 +5,7 @@
     },
     "infoTypes": [
         {
-            "id": "UUID1",
+            "identifier": "UUID1",
             "name": "composer version",
             "description": "composer version",
             "defaultBranch": "master",

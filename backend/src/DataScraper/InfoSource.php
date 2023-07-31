@@ -8,7 +8,9 @@ final readonly class InfoSource
 {
     public function __construct(
         public string $path,
-        public InfoType $infoType,
+        public string $branch,
+        public string $scraper,
+        public string $infoTypeId,
     ) {
     }
 }

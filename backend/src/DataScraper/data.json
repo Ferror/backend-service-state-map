@@ -1,8 +1,4 @@
 {
-    "organisation": {
-        "token": "token",
-        "name": "ferror"
-    },
     "infoTypes": [
         {
             "identifier": "UUID1",
@@ -31,6 +27,7 @@
     ],
     "services": [
         {
+            "organisation": "ferror",
             "name": "sylius-standard",
             "description": "Sylius Standard Service",
             "infoSources": [
@@ -43,6 +40,7 @@
             ]
         },
         {
+            "organisation": "ferror",
             "name": "warehouse",
             "description": "Warehouse Service",
             "infoSources": [

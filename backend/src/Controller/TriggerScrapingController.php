@@ -33,7 +33,7 @@ final class TriggerScrapingController extends AbstractController
         // Fetch Content
         foreach ($data->services as $service) {
             foreach ($service->infoSources as $infoSource) {
-                $path = $data->organisation->name . '/' . $service->name . '/' . $infoSource->branch . '/' . $infoSource->path;
+                $path = $service->organisation . '/' . $service->name . '/' . $infoSource->branch . '/' . $infoSource->path;
                 $response = $this->githubClient->request(
                     Request::METHOD_GET,
                     $path,

@@ -7,10 +7,10 @@ namespace App\DataScraper;
 final readonly class InfoSource
 {
     public function __construct(
+        public string $infoTypeId,
         public string $path,
         public string $branch,
-        public string $scraper,
-        public string $infoTypeId,
+        public ?string $scraper = null,
     ) {
     }
 }

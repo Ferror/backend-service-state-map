@@ -22,8 +22,8 @@ final class TriggerScrapingController extends AbstractController
     private array $scrapers = [];
 
     public function __construct(
-        private HttpClientInterface $githubClient,
-        private Configuration $configuration,
+        private readonly HttpClientInterface $githubClient,
+        private readonly Configuration $configuration,
     ) {
     }
 
@@ -41,21 +41,26 @@ final class TriggerScrapingController extends AbstractController
                     $path
                 );
                 $content = $response->getContent();
-                $this->index[$service->name][$infoSource->path] = $content;
-                $this->scrapers[$service->name][$infoSource->path][] = new PregMatchScraper($infoSource->scraper);
-                $this->scrapers[$service->name][$infoSource->path][] = new SymfonyVersionScraper();
+                $this->index[$service->name][$infoSource->infoTypeId] = $content;
+            }
+        }
+
+        foreach ($data->services as $service) {
+            foreach ($service->infoSources as $infoSource) {
+                if ($infoSource->scraper) {
+                    $this->scrapers[$service->name][$infoSource->infoTypeId][] = new PregMatchScraper($infoSource->scraper);
+                }
             }
         }
 
         // execute scrapers
         foreach ($data->services as $service) {
             foreach ($service->infoSources as $infoSource) {
-
-                foreach ($this->scrapers[$service->name][$infoSource->path] as $scraper) {
+                foreach ($this->scrapers[$service->name][$infoSource->infoTypeId] as $scraper) {
                     if ($scraper->supports($infoSource->path)) {
-                        $value = $scraper->scrape($this->index[$service->name][$infoSource->path]);
+                        $value = $scraper->scrape($this->index[$service->name][$infoSource->infoTypeId]);
                         if ($value) {
-                            $this->scraped[$service->name][$infoSource->path] = $value;
+                            $this->scraped[$service->name][$infoSource->infoTypeId] = $value;
                         }
                     }
                 }

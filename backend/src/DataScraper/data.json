@@ -21,7 +21,7 @@
             "defaultScraper": "~COMPOSER_VERSION=(\\d+.\\d+.\\d+)~"
         },
         {
-            "identifier": "UUID2",
+            "identifier": "UUID3",
             "name": "composer version",
             "description": "composer version",
             "defaultBranch": "master",
@@ -61,8 +61,7 @@
                 {
                     "infoTypeId": "UUID3",
                     "branch": "master",
-                    "path": "backend/app/composer.json",
-                    "scraper": "-"
+                    "path": "backend/app/composer.json"
                 }
             ]
         }

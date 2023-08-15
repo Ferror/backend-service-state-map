@@ -1,28 +1,68 @@
 {
     "organisation": {
         "token": "token",
-        "name": "organisation-name"
+        "name": "ferror"
     },
     "infoTypes": [
         {
             "identifier": "UUID1",
+            "name": "php version",
+            "description": "php version",
+            "defaultBranch": "master",
+            "defaultPath": "Dockerfile",
+            "defaultScraper": "~PHP_VERSION=(\\d+.\\d+.\\d+)~"
+        },
+        {
+            "identifier": "UUID2",
             "name": "composer version",
             "description": "composer version",
             "defaultBranch": "master",
-            "defaultPath": "path/file/composer.json",
+            "defaultPath": "composer.json",
             "defaultScraper": "~COMPOSER_VERSION=(\\d+.\\d+.\\d+)~"
+        },
+        {
+            "identifier": "UUID2",
+            "name": "composer version",
+            "description": "composer version",
+            "defaultBranch": "master",
+            "defaultPath": "composer.json",
+            "defaultScraper": "-"
         }
     ],
     "services": [
         {
-            "name": "service1",
-            "description": "service1 description",
+            "name": "sylius-standard",
+            "description": "Sylius Standard Service",
             "infoSources": [
                 {
                     "infoTypeId": "UUID1",
                     "branch": "master",
-                    "path": "path/file/composer.json",
+                    "path": "Dockerfile",
+                    "scraper": "~PHP_VERSION=(\\d+.\\d+.*?)~"
+                }
+            ]
+        },
+        {
+            "name": "warehouse",
+            "description": "Warehouse Service",
+            "infoSources": [
+                {
+                    "infoTypeId": "UUID1",
+                    "branch": "master",
+                    "path": "backend/Dockerfile",
+                    "scraper": "~PHP_VERSION=(\\d+.\\d+.\\d+)~"
+                },
+                {
+                    "infoTypeId": "UUID2",
+                    "branch": "master",
+                    "path": "backend/Dockerfile",
                     "scraper": "~COMPOSER_VERSION=(\\d+.\\d+.\\d+)~"
+                },
+                {
+                    "infoTypeId": "UUID3",
+                    "branch": "master",
+                    "path": "backend/app/composer.json",
+                    "scraper": "-"
                 }
             ]
         }

@@ -22,10 +22,9 @@ framework:
         scoped_clients:
             # only requests matching scope will use these options
             github.client:
-                base_uri: 'https://api.github.com'
+                base_uri: 'https://raw.githubusercontent.com'
                 headers:
-                    Accept: 'application/vnd.github.v3+json'
-                    Authorization: 'token %env(GITHUB_API_TOKEN)%'
+                    Accept: 'application/vnd.github+json'
 
 when@test:
     framework:

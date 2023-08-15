@@ -6,7 +6,7 @@ namespace App\DataScraper;
 
 interface ScraperInterface
 {
-    public function scrape(string $fileContent);
-    public function getFileType(): InfoSource;
-    public function getInfoType(): InfoType;
+    public function scrape(string $fileContent): mixed;
+
+    public function supports(string $path): bool;
 }

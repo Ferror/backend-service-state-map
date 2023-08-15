@@ -6,8 +6,6 @@ namespace App\Controller;
 
 use App\Configuration;
 use App\DataScraper\PregMatchScraper;
-use App\DataScraper\ScraperInterface;
-use App\DataScraper\SymfonyVersionScraper;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -38,13 +36,14 @@ final class TriggerScrapingController extends AbstractController
                 $path = $data->organisation->name . '/' . $service->name . '/' . $infoSource->branch . '/' . $infoSource->path;
                 $response = $this->githubClient->request(
                     Request::METHOD_GET,
-                    $path
+                    $path,
                 );
                 $content = $response->getContent();
-                $this->index[$service->name][$infoSource->infoTypeId] = $content;
+                $this->index[$service->name][$infoSource->path] = $content;
             }
         }
 
+        // Register Scrapers
         foreach ($data->services as $service) {
             foreach ($service->infoSources as $infoSource) {
                 if ($infoSource->scraper) {
@@ -53,12 +52,12 @@ final class TriggerScrapingController extends AbstractController
             }
         }
 
-        // execute scrapers
+        // Execute Scrapers
         foreach ($data->services as $service) {
             foreach ($service->infoSources as $infoSource) {
                 foreach ($this->scrapers[$service->name][$infoSource->infoTypeId] as $scraper) {
                     if ($scraper->supports($infoSource->path)) {
-                        $value = $scraper->scrape($this->index[$service->name][$infoSource->infoTypeId]);
+                        $value = $scraper->scrape($this->index[$service->name][$infoSource->path]);
                         if ($value) {
                             $this->scraped[$service->name][$infoSource->infoTypeId] = $value;
                         }

@@ -57,11 +57,6 @@
                     "branch": "master",
                     "path": "backend/Dockerfile",
                     "scraper": "~COMPOSER_VERSION=(\\d+.\\d+.\\d+)~"
-                },
-                {
-                    "infoTypeId": "UUID3",
-                    "branch": "master",
-                    "path": "backend/app/composer.json"
                 }
             ]
         }
